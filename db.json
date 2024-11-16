@@ -35,6 +35,12 @@
       "nombre_cliente": "Juan Pérez",
       "direccion_cliente": "Calle 10 #20-30",
       "celular_cliente": "3001234567"
+    },
+    {
+      "id_cliente": 7,
+      "nombre_cliente": "Sandra Margarita Perez",
+      "direccion_cliente": "calle  0  n  0  0",
+      "celular_cliente": "3505254183"
     }
   ],
   "productos": [
