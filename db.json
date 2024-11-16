@@ -29,6 +29,12 @@
       "nombre_cliente": "Juana Saboya",
       "direccion_cliente": "Calle 5  n  8 4",
       "celular_cliente": "3002541414"
+    },
+    {
+      "id_cliente": 9,
+      "nombre_cliente": "Margarita Suarez",
+      "direccion_cliente": "Calle 5 n 54 12",
+      "celular_cliente": "3125481564"
     }
   ],
   "productos": [
@@ -64,6 +70,11 @@
       "id_producto": 7,
       "nombre_producto": "Tablet Android 14 in",
       "precio_producto": 3500000
+    },
+    {
+      "id_producto": 8,
+      "nombre_producto": "Impresora",
+      "precio_producto": 600000
     }
   ],
   "carrito": [
@@ -94,6 +105,24 @@
           "nombre_producto": "Teclado Mecánico",
           "cantidad": 1,
           "precio_unitario": 350000
+        }
+      ]
+    },
+    {
+      "id_carrito": 3,
+      "id_cliente": 5,
+      "productos": [
+        {
+          "id_producto": 4,
+          "nombre_producto": "Teclado Mecánico",
+          "cantidad": 1,
+          "precio_unitario": 350000
+        },
+        {
+          "id_producto": 5,
+          "nombre_producto": "Monitor 16 pul",
+          "cantidad": 1,
+          "precio_producto": 1500000
         }
       ]
     }
