@@ -82,6 +82,12 @@
           "nombre_producto": "Mouse",
           "cantidad": 1,
           "precio_unitario": 330
+        },
+        {
+          "id_producto": 5,
+          "nombre_producto": "Monitor 16 pul",
+          "cantidad": 1,
+          "precio_producto": 1500000
         }
       ]
     }
