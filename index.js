@@ -146,6 +146,20 @@ app.put("/clientes/:id_cliente", (req, res) => {
     }
 });
 
+app.put("/productos/:id_producto", (req, res) => {
+    const id_producto = parseInt(req.params.id_producto);
+    const {nombre_producto, precio_producto} = req.body;
+    const data = readData();
+    const productoIndex = data.productos.findIndex(prod => prod.id_producto === id_producto);
+
+    if (productoIndex !== -1) {
+        data.productos[productoIndex] = { ...data.productos[productoIndex], nombre_producto,precio_producto };
+        writeDatabase(data);
+        res.json(data.productos[productoIndex]);
+    } else {
+        res.status(404).send('Producto no encontrado');
+    }
+});
 
 //PATCH: Actualizar parcialmente el id_cliente
 app.patch("/clientes/:id_cliente", (req, res) => {
