@@ -2,9 +2,9 @@
   "clientes": [
     {
       "id_cliente": 3,
-      "nombre_cliente": "Ana Pérez",
-      "direccion_cliente": "Carrera 45 #23-10",
-      "celular_cliente": "3156789102"
+      "nombre_cliente": "David Escamilla",
+      "direccion_cliente": "calle 19 n 18 40",
+      "celular_cliente": "3205482415"
     },
     {
       "id_cliente": 5,
@@ -14,27 +14,33 @@
     },
     {
       "id_cliente": 6,
-      "nombre_cliente": "Diana Sofia Lara",
-      "direccion_cliente": "calle 5  n  7 20",
-      "celular_cliente": "3112541254"
+      "nombre_cliente": "Carlos Gómez",
+      "direccion_cliente": "Carrera 1 #10-20",
+      "celular_cliente": "3201234567"
     },
     {
       "id_cliente": 7,
-      "nombre_cliente": "Carlos David Escamilla",
+      "nombre_cliente": "Daiana Montenegro",
       "direccion_cliente": "calle  2A  n  19  8",
       "celular_cliente": "3127035849"
     },
     {
       "id_cliente": 8,
-      "nombre_cliente": "Juana Saboya",
-      "direccion_cliente": "Calle 5  n  8 4",
-      "celular_cliente": "3002541414"
+      "nombre_cliente": "Carlos Gómez",
+      "direccion_cliente": "Carrera 1 #10-20",
+      "celular_cliente": "3201234567"
     },
     {
       "id_cliente": 9,
       "nombre_cliente": "Margarita Suarez",
       "direccion_cliente": "Calle 5 n 54 12",
       "celular_cliente": "3125481564"
+    },
+    {
+      "id_cliente": 10,
+      "nombre_cliente": "Carlos Gómez",
+      "direccion_cliente": "Carrera 1 #10-20",
+      "celular_cliente": "3201234567"
     }
   ],
   "productos": [
@@ -58,8 +64,8 @@
     },
     {
       "id_producto": 5,
-      "nombre_producto": "Monitor 16 pul",
-      "precio_producto": 1500000
+      "nombre_producto": "Camara de Seguridad",
+      "precio_producto": 350000
     },
     {
       "id_producto": 6,
@@ -75,6 +81,11 @@
       "id_producto": 8,
       "nombre_producto": "Impresora",
       "precio_producto": 600000
+    },
+    {
+      "id_producto": 9,
+      "nombre_producto": "Portatil",
+      "precio_producto": 3500000
     }
   ],
   "carrito": [
@@ -93,6 +104,12 @@
           "nombre_producto": "Monitor 16 pul",
           "cantidad": 1,
           "precio_producto": 1500000
+        },
+        {
+          "id_producto": 4,
+          "nombre_producto": "Teclado Mecánico",
+          "cantidad": 1,
+          "precio_unitario": 350000
         }
       ]
     },
@@ -103,6 +120,12 @@
         {
           "id_producto": 4,
           "nombre_producto": "Teclado Mecánico",
+          "cantidad": 1,
+          "precio_unitario": 350000
+        },
+        {
+          "id_producto": 5,
+          "nombre_producto": "Camara de Seguridad",
           "cantidad": 1,
           "precio_unitario": 350000
         }
@@ -117,12 +140,24 @@
           "nombre_producto": "Teclado Mecánico",
           "cantidad": 1,
           "precio_unitario": 350000
+        }
+      ]
+    },
+    {
+      "id_carrito": 4,
+      "id_cliente": 6,
+      "productos": [
+        {
+          "id_producto": 2,
+          "nombre_producto": "Mouse",
+          "cantidad": 1,
+          "precio_unitario": 330
         },
         {
-          "id_producto": 5,
-          "nombre_producto": "Monitor 16 pul",
+          "id_producto": 9,
+          "nombre_producto": "Portatil",
           "cantidad": 1,
-          "precio_producto": 1500000
+          "precio_unitario": 3500000
         }
       ]
     }

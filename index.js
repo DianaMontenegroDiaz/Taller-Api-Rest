@@ -163,6 +163,53 @@ app.patch("/clientes/:id_cliente", (req, res) => {
     }
 });
 
+// PATCH: Actualizar parcialmente un producto
+app.patch("/productos/:id_producto", (req, res) => {
+    const id_producto = parseInt(req.params.id_producto);
+    const { nombre_producto, precio_producto } = req.body;
+    const data = readData();
+    const producto = data.productos.find(prod => prod.id_producto === id_producto);
+
+    if (producto) {
+        producto.nombre_producto = nombre_producto || producto.nombre_producto;
+        producto.precio_producto = precio_producto || producto.precio_producto;
+        writeDatabase(data);
+        res.json(producto);
+    } else {
+        res.status(404).send('Producto no encontrado');
+    }
+});
+
+
+// PATCH: Actualizar parcialmente el carrito
+app.patch("/carrito/:id_cliente", (req, res) => {
+    const id_cliente = parseInt(req.params.id_cliente);
+    const { productos } = req.body; // Array de productos a modificar
+    const data = readData();
+    const carrito = data.carrito.find(car => car.id_cliente === id_cliente);
+
+    if (carrito) {
+        // Si se envían productos, actualizarlos o agregarlos
+        if (productos) {
+            productos.forEach(nuevoProducto => {
+                const productoExistente = carrito.productos.find(prod => prod.id_producto === nuevoProducto.id_producto);
+                if (productoExistente) {
+                    productoExistente.cantidad = nuevoProducto.cantidad || productoExistente.cantidad;
+                } else {
+                    carrito.productos.push(nuevoProducto);
+                }
+            });
+        }
+        writeDatabase(data);
+        res.json(carrito);
+    } else {
+        res.status(404).send('Carrito no encontrado');
+    }
+});
+
+
+
+
 
 //DELETE: Eliminar un producto, carrito o cliente
 
