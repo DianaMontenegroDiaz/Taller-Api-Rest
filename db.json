@@ -90,6 +90,18 @@
           "precio_producto": 1500000
         }
       ]
+    },
+    {
+      "id_carrito": 2,
+      "id_cliente": 3,
+      "productos": [
+        {
+          "id_producto": 4,
+          "nombre_producto": "Teclado Mecánico",
+          "cantidad": 1,
+          "precio_unitario": 350000
+        }
+      ]
     }
   ]
 }
