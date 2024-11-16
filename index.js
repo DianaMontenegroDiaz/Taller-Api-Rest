@@ -195,6 +195,103 @@ app.delete("/productos/:id_producto", (req, res) => {
     }
 });
 
+
+
+// Obtener todos los carritos
+app.get("/carrito", (req, res) => {
+    const data = readData();
+    res.json(data.carrito);
+});
+
+// Crear un nuevo carrito o agregar productos a un carrito existente
+app.post("/carrito", (req, res) => {
+    const { id_cliente, productos } = req.body;
+    const data = readData();
+    
+    // Buscar si el cliente ya tiene un carrito
+    let carrito = data.carrito.find(c => c.id_cliente === id_cliente);
+
+    if (carrito) {
+        // Agregar productos al carrito existente
+        productos.forEach(producto => {
+            const productoExistente = carrito.productos.find(p => p.id_producto === producto.id_producto);
+            if (productoExistente) {
+                productoExistente.cantidad += producto.cantidad; // Actualizar cantidad
+            } else {
+                carrito.productos.push(producto); // Agregar nuevo producto
+            }
+        });
+    } else {
+        // Crear un nuevo carrito
+        const newIdCarrito = data.carrito.length ? data.carrito[data.carrito.length - 1].id_carrito + 1 : 1;
+        const nuevoCarrito = {
+            id_carrito: newIdCarrito,
+            id_cliente,
+            productos
+        };
+        data.carrito.push(nuevoCarrito);
+    }
+
+    writeDatabase(data);
+    res.status(201).json({ message: "Carrito actualizado o creado con éxito." });
+});
+
+// Actualizar productos en un carrito
+app.put("/carrito/:id_carrito", (req, res) => {
+    const id_carrito = parseInt(req.params.id_carrito);
+    const { productos } = req.body;
+    const data = readData();
+    
+    const carrito = data.carrito.find(c => c.id_carrito === id_carrito);
+
+    if (carrito) {
+        // Reemplazar los productos en el carrito
+        carrito.productos = productos;
+        writeDatabase(data);
+        res.json({ message: "Carrito actualizado.", carrito });
+    } else {
+        res.status(404).send("Carrito no encontrado.");
+    }
+});
+
+// Eliminar un producto de un carrito
+app.delete("/carrito/:id_carrito/producto/:id_producto", (req, res) => {
+    const id_carrito = parseInt(req.params.id_carrito);
+    const id_producto = parseInt(req.params.id_producto);
+    const data = readData();
+
+    const carrito = data.carrito.find(c => c.id_carrito === id_carrito);
+
+    if (carrito) {
+        carrito.productos = carrito.productos.filter(p => p.id_producto !== id_producto);
+        writeDatabase(data);
+        res.json({ message: "Producto eliminado del carrito.", carrito });
+    } else {
+        res.status(404).send("Carrito no encontrado.");
+    }
+});
+
+// Eliminar un carrito completo
+app.delete("/carrito/:id_carrito", (req, res) => {
+    const id_carrito = parseInt(req.params.id_carrito);
+    const data = readData();
+
+    const carritosRestantes = data.carrito.filter(c => c.id_carrito !== id_carrito);
+
+    if (carritosRestantes.length !== data.carrito.length) {
+        data.carrito = carritosRestantes;
+        writeDatabase(data);
+        res.json({ message: "Carrito eliminado." });
+    } else {
+        res.status(404).send("Carrito no encontrado.");
+    }
+});
+
+
+
+
+
+
 app.listen(4000, () => {
     console.log("Servidor iniciado en el puerto 4000");
 });
