@@ -99,7 +99,7 @@ app.get("/carrito/:id_cliente", (req, res) => {
 
 
 //POST: Agregar un nuevo cliente y un nuevo producto
-// Agregar un nuevo cliente
+
 app.post("/clientes", (req, res) => {
     const { nombre_cliente, direccion_cliente, celular_cliente } = req.body;
     const data = readData();
@@ -113,7 +113,7 @@ app.post("/clientes", (req, res) => {
 });
 
 
-// Agregar un nuevo producto
+
 // POST: Agregar un nuevo producto
 app.post("/productos", (req, res) => {
     const { nombre_producto, precio_producto } = req.body;
@@ -166,7 +166,6 @@ app.patch("/clientes/:id_cliente", (req, res) => {
 
 //DELETE: Eliminar un producto, carrito o cliente
 
-// Eliminar un cliente
 app.delete("/clientes/:id_cliente", (req, res) => {
     const id_cliente = parseInt(req.params.id_cliente);
     const data = readData();
