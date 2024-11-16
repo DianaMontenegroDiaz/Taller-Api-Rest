@@ -65,9 +65,25 @@
       "id_producto": 6,
       "nombre_producto": "Mause",
       "precio_producto": 70000
+    },
+    {
+      "id_producto": 7,
+      "nombre_producto": "Tablet",
+      "precio_producto": 300
     }
   ],
   "carrito": [
-    
+    {
+      "id_carrito": 1,
+      "id_cliente": 1,
+      "productos": [
+        {
+          "id_producto": 2,
+          "nombre_producto": "Mouse",
+          "cantidad": 1,
+          "precio_unitario": 330
+        }
+      ]
+    }
   ]
 }
