@@ -1,0 +1,61 @@
+{
+  "clientes": [
+    {
+      "id_cliente": 1,
+      "nombre_cliente": "Sandra Margarita Perez",
+      "direccion_cliente": "calle  0  n  0  0",
+      "celular_cliente": "3505254183"
+    },
+    {
+      "id_cliente": 2,
+      "nombre_cliente": "Sandra Margarita Perez",
+      "direccion_cliente": "calle  0  n  0  0",
+      "celular_cliente": "3505254183"
+    },
+    {
+      "id_cliente": 3,
+      "nombre_cliente": "Ana Pérez",
+      "direccion_cliente": "Carrera 45 #23-10",
+      "celular_cliente": "3156789102"
+    },
+    {
+      "id_cliente": 4,
+      "nombre_cliente": "Juan Pérez",
+      "direccion_cliente": "Calle 10 #20-30",
+      "celular_cliente": "3001234567"
+    },
+    {
+      "id_cliente": 5,
+      "nombre_cliente": "Juan Pérez",
+      "direccion_cliente": "Calle 10 #20-30",
+      "celular_cliente": "3001234567"
+    },
+    {
+      "id_cliente": 6,
+      "nombre_cliente": "Juan Pérez",
+      "direccion_cliente": "Calle 10 #20-30",
+      "celular_cliente": "3001234567"
+    }
+  ],
+  "productos": [
+    {
+      "id_producto": 1
+    },
+    {
+      "id_producto": 2,
+      "nombre_producto": "Tablet",
+      "precio_producto": 300
+    },
+    {
+      "id_producto": 3,
+      "nombre_producto": "Teclado Mecánico",
+      "precio_producto": 350000
+    },
+    {
+      "id_producto": 4,
+      "nombre_producto": "Teclado Mecánico",
+      "precio_producto": 350000
+    }
+  ],
+  "carrito": []
+}
