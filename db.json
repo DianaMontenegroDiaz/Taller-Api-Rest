@@ -1,12 +1,6 @@
 {
   "clientes": [
     {
-      "id_cliente": 3,
-      "nombre_cliente": "David Escamilla",
-      "direccion_cliente": "calle 19 n 18 40",
-      "celular_cliente": "3205482415"
-    },
-    {
       "id_cliente": 5,
       "nombre_cliente": "Pedro Paramo",
       "direccion_cliente": "Calle 09 #10-17",
@@ -20,13 +14,13 @@
     },
     {
       "id_cliente": 7,
-      "nombre_cliente": "Daiana Montenegro",
-      "direccion_cliente": "calle  2A  n  19  8",
-      "celular_cliente": "3127035849"
+      "nombre_cliente": "Clara Mendez",
+      "direccion_cliente": "Calle 8 n 7 20",
+      "celular_cliente": "312122557"
     },
     {
       "id_cliente": 8,
-      "nombre_cliente": "Carlos Gómez",
+      "nombre_cliente": "Carlos Alberto Manrique",
       "direccion_cliente": "Carrera 1 #10-20",
       "celular_cliente": "3201234567"
     },
@@ -45,7 +39,9 @@
   ],
   "productos": [
     {
-      "id_producto": 1
+      "id_producto": 1,
+      "nombre_producto": "Mouse Pad",
+      "precio_producto": 20000
     },
     {
       "id_producto": 2,
@@ -59,8 +55,8 @@
     },
     {
       "id_producto": 4,
-      "nombre_producto": "Teclado Mecánico",
-      "precio_producto": 350000
+      "nombre_producto": "Portatil asus",
+      "precio_producto": 4000000
     },
     {
       "id_producto": 5,
@@ -73,46 +69,12 @@
       "precio_producto": 70000
     },
     {
-      "id_producto": 7,
-      "nombre_producto": "Tablet Android 14 in",
-      "precio_producto": 3500000
-    },
-    {
       "id_producto": 8,
       "nombre_producto": "Impresora",
       "precio_producto": 600000
-    },
-    {
-      "id_producto": 9,
-      "nombre_producto": "Portatil",
-      "precio_producto": 3500000
     }
   ],
   "carrito": [
-    {
-      "id_carrito": 1,
-      "id_cliente": 1,
-      "productos": [
-        {
-          "id_producto": 2,
-          "nombre_producto": "Mouse",
-          "cantidad": 1,
-          "precio_unitario": 330
-        },
-        {
-          "id_producto": 5,
-          "nombre_producto": "Monitor 16 pul",
-          "cantidad": 1,
-          "precio_producto": 1500000
-        },
-        {
-          "id_producto": 4,
-          "nombre_producto": "Teclado Mecánico",
-          "cantidad": 1,
-          "precio_unitario": 350000
-        }
-      ]
-    },
     {
       "id_carrito": 2,
       "id_cliente": 3,
@@ -137,9 +99,9 @@
       "productos": [
         {
           "id_producto": 4,
-          "nombre_producto": "Teclado Mecánico",
+          "nombre_producto": "Portatil asus",
           "cantidad": 1,
-          "precio_unitario": 350000
+          "precio_unitario": 4000000
         }
       ]
     },
