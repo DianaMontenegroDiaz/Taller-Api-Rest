@@ -146,6 +146,8 @@ app.put("/clientes/:id_cliente", (req, res) => {
     }
 });
 
+//PUT: Modificar datos de un producto
+
 app.put("/productos/:id_producto", (req, res) => {
     const id_producto = parseInt(req.params.id_producto);
     const {nombre_producto, precio_producto} = req.body;
