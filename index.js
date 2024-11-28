@@ -227,6 +227,7 @@ app.patch("/carrito/:id_cliente", (req, res) => {
 
 
 
+
 //DELETE: Eliminar un producto, carrito o cliente
 
 app.delete("/clientes/:id_cliente", (req, res) => {
