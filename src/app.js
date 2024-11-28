@@ -9,4 +9,8 @@ app.get('/productos', (req, res) => {
     res.send('Ejemplo 2 de prueba unitaria');
 });
 
+app.get('/clientes/:id_cliente', (req, res) => {
+    res.send('Ejemplo 3 de prueba unitaria');
+});
+
 module.exports = app;
