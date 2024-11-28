@@ -1,11 +1,11 @@
-const request = require('supertest');
-const app = required ('../src/app');
+const request =require('supertest');
+const app =require('../src/app');
 
-describe('get/....',() => {
+describe('get/clientes',() => {
 
     it ('retornar un codigo 200', async () => {
-        const response = await request(app).get('/...');
-        expect(response.test).toBe('Ejemplo');
+        const response = await request(app).get('/clientes');
+        expect(response.text).toBe('Ejemplo de prueba unitaria');
 });
     
 });
