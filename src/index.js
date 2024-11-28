@@ -352,10 +352,6 @@ app.delete("/carrito/:id_carrito", (req, res) => {
 });
 
 
-
-
-
-
 app.listen(4000, () => {
     console.log("Servidor iniciado en el puerto 4000");
 });
