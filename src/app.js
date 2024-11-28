@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 
 app.get('/clientes', (req, res) => {
-    res.send('Ejemplo de prueba unitaria');
+    res.send('Ejemplo 1 de prueba unitaria');
 });
 
 app.get('/productos', (req, res) => {
@@ -11,6 +11,18 @@ app.get('/productos', (req, res) => {
 
 app.get('/clientes/:id_cliente', (req, res) => {
     res.send('Ejemplo 3 de prueba unitaria');
+});
+
+app.get('/productos/:id_producto', (req, res) => {
+    res.send('Ejemplo 4 de prueba unitaria');
+});
+
+app.get('/carrito', (req, res) => {
+    res.send('Ejemplo 5 de prueba unitaria');
+});
+
+app.get('/carrito/:id_cliente', (req, res) => {
+    res.send('Ejemplo 6 de prueba unitaria');
 });
 
 module.exports = app;
