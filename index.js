@@ -2,6 +2,17 @@ import express from 'express';
 import fs from 'fs';
 import path from 'path';
 
+// Exportar app para pruebas
+export default app;
+
+// Iniciar servidor solo si no se importa como módulo
+if (process.env.NODE_ENV !== 'test') {
+    app.listen(4000, () => {
+        console.log("Servidor iniciado en el puerto 4000");
+    });
+}
+
+
 // Configuración del servidor Express
 const app = express();
 const PORT = 4000;
