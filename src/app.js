@@ -1,11 +1,11 @@
 const express = require("express");
 const app = express();
 
-app.get('/...', (req, res) => {
+app.get('/clientes', (req, res) => {
     res.send('Ejemplo de prueba unitaria');
 });
 
-app.get('/...', (req, res) => {
+app.get('/productos', (req, res) => {
     res.send('Ejemplo 2 de prueba unitaria');
 });
 
