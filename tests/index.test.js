@@ -54,3 +54,13 @@ describe('get/carrito/:id_cliente',() => {
 });
     
 });
+
+describe('post/clientes',() => {
+
+    it ('retornar un codigo 200', async () => {
+        const response = await request(app).post('/clientes');
+        expect(response.status).toBe(200);
+        expect(response.text).toBe('Ejemplo 7 de prueba unitaria');
+});
+    
+});
