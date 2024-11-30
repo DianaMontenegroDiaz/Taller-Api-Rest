@@ -6,71 +6,10 @@ describe('get/clientes',() => {
     it ('retornar un codigo 200', async () => {
         const response = await request(app).get('/clientes');
         expect(response.text).toBe('Ejemplo 1 de prueba unitaria');
+        expect(response.body).toBe([
+            { id_cliente: 5, nombre_cliente: "Pedro Paramo", direccion_cliente: "Calle 09 #10-17", celular_cliente: "3208865439" }
+        ]);
 });
     
 });
 
-describe('get/productos',() => {
-
-    it ('retornar un codigo 200', async () => {
-        const response = await request(app).get('/productos');
-        expect(response.text).toBe('Ejemplo 2 de prueba unitaria');
-});
-    
-});
-
-describe('get/clientes/:id_cliente',() => {
-
-    it ('retornar un codigo 200', async () => {
-        const response = await request(app).get('/clientes/:id_cliente');
-        expect(response.text).toBe('Ejemplo 3 de prueba unitaria');
-});
-    
-});
-
-describe('get/productos/:id_producto',() => {
-
-    it ('retornar un codigo 200', async () => {
-        const response = await request(app).get('/productos/:id_producto');
-        expect(response.text).toBe('Ejemplo 4 de prueba unitaria');
-});
-    
-});
-
-describe('get/carrito',() => {
-
-    it ('retornar un codigo 200', async () => {
-        const response = await request(app).get('/carrito');
-        expect(response.text).toBe('Ejemplo 5 de prueba unitaria');
-});
-    
-});
-
-describe('get/carrito/:id_cliente',() => {
-
-    it ('retornar un codigo 200', async () => {
-        const response = await request(app).get('/carrito/:id_cliente');
-        expect(response.text).toBe('Ejemplo 6 de prueba unitaria');
-});
-    
-});
-
-describe('post/clientes',() => {
-
-    it ('retornar un codigo 200', async () => {
-        const response = await request(app).post('/clientes');
-        expect(response.status).toBe(200);
-        expect(response.text).toBe('Ejemplo 7 de prueba unitaria');
-});
-    
-});
-
-describe('patch/carrito/:id_cliente',() => {
-
-    it ('retornar un codigo 200', async () => {
-        const response = await request(app).patch('/carrito/:id_cliente');
-        expect(response.status).toBe(200);
-        expect(response.text).toBe('Ejemplo 8 de prueba unitaria');
-});
-    
-});
