@@ -20,6 +20,7 @@ app.get('/clientes/5', (req, res) => {
     res.send('Ejemplo 1 de prueba unitaria');
 
 });
+})
 
 // Ruta GET: Obtener un cliente por ID
 app.get("/clientes/:id", (req, res) => {
