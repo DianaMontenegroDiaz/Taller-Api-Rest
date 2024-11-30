@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 
+<<<<<<< HEAD
 // Middleware para parsear JSON
 app.use(express.json());
 
@@ -14,6 +15,10 @@ let clientes = [
 // Ruta GET: Obtener todos los clientes
 app.get("/clientes", (req, res) => {
     res.status(200).json(clientes);
+=======
+app.get('/clientes/5', (req, res) => {
+    res.send('Ejemplo 1 de prueba unitaria');
+>>>>>>> 7e5746b572a6424ce67eb75f9b40679ea0210457
 });
 
 // Ruta GET: Obtener un cliente por ID
