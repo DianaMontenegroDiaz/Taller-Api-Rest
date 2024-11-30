@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 
-<<<<<<< HEAD
 // Middleware para parsear JSON
 app.use(express.json());
 
@@ -15,10 +14,6 @@ let clientes = [
 // Ruta GET: Obtener todos los clientes
 app.get("/clientes", (req, res) => {
     res.status(200).json(clientes);
-=======
-app.get('/clientes/5', (req, res) => {
-    res.send('Ejemplo 1 de prueba unitaria');
->>>>>>> 7e5746b572a6424ce67eb75f9b40679ea0210457
 });
 
 // Ruta GET: Obtener un cliente por ID
@@ -33,42 +28,31 @@ app.get("/clientes/:id", (req, res) => {
 });
 
 // Ruta POST: Crear un nuevo cliente
-app.post('/clientes', (req, res) => {
-    const { nombre_cliente, direccion_cliente, celular_cliente } = req.body;
-  
-    const newClient = {
-      id: Date.now(), // Usamos un ID ficticio para la demostración
-      nombre_cliente,
-      direccion_cliente,
-      celular_cliente,
+app.post("/clientes", (req, res) => {
+    const { nombre, direccion, celular } = req.body;
+    const nuevoCliente = {
+        id: clientes.length + 1,
+        nombre,
+        direccion,
+        celular,
     };
-  
-    // Deberías agregar el cliente al array de clientes en memoria o base de datos
-    clients.push(newClient); // Asegúrate de tener la variable `clients` definida.
-  
-    // Responde con el cliente creado
-    res.status(201).json(newClient);
-  });
-  
+    clientes.push(nuevoCliente);
+    res.status(201).json(nuevoCliente);
+});
 
 // Ruta PUT: Actualizar completamente un cliente
-app.put('/clientes/:id_cliente', (req, res) => {
-    const { id_cliente } = req.params;
-    const { nombre_cliente, direccion_cliente, celular_cliente } = req.body;
-  
-    // Busca al cliente por su ID
-    let client = clients.find(c => c.id == id_cliente);
-    if (!client) return res.status(404).send('Cliente no encontrado');
-  
-    // Actualiza los datos del cliente
-    client.nombre_cliente = nombre_cliente;
-    client.direccion_cliente = direccion_cliente;
-    client.celular_cliente = celular_cliente;
-  
-    // Devuelve el cliente actualizado
-    res.status(200).json(client);
-  });
-  
+app.put("/clientes/:id", (req, res) => {
+    const id = parseInt(req.params.id);
+    const { nombre, direccion, celular } = req.body;
+    const clienteIndex = clientes.findIndex((cli) => cli.id === id);
+
+    if (clienteIndex !== -1) {
+        clientes[clienteIndex] = { id, nombre, direccion, celular };
+        res.status(200).json(clientes[clienteIndex]);
+    } else {
+        res.status(404).send("Cliente no encontrado");
+    }
+});
 
 // Ruta PATCH: Actualizar parcialmente un cliente
 app.patch("/clientes/:id", (req, res) => {
