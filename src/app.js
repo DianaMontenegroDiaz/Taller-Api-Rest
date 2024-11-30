@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 
+
 // Middleware para parsear JSON
 app.use(express.json());
 
@@ -11,8 +12,6 @@ let clientes = [
   { id: 3, nombre: "Cliente 3", direccion: "Calle 572", celular: "3209034587" },
   { id: 4, nombre: "Cliente 4", direccion: "Carrera 456", celular: "3154218747" },
   { id: 5, nombre: "Pedro Paramo", direccion: "Calle 09 #10-17", celular: "3208865439" }
-
-
 
 ];
 
