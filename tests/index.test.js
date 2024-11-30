@@ -1,6 +1,7 @@
 const request = require('supertest');
 const app = require('../src/app');
 
+<<<<<<< HEAD
 describe('Pruebas de rutas en el servidor Express', () => {
   
   it('Debe retornar todos los clientes', async () => {
@@ -45,4 +46,17 @@ describe('Pruebas de rutas en el servidor Express', () => {
     expect(response.status).toBe(200);
     expect(response.text).toBe('Cliente eliminado');
   });
+=======
+describe('get/clientes/5',() => {
+
+    it ('retornar un codigo 200', async () => {
+        const response = await request(app).get('/clientes/5');
+        expect(response.status).toBe(200);
+        expect(response.body).toEqual({
+            id_cliente: 5, 
+            nombre_cliente: "Pedro Paramo", 
+            direccion_cliente: "Calle 09 #10-17", 
+            celular_cliente: "3208865439" 
+        });
+>>>>>>> 7e5746b572a6424ce67eb75f9b40679ea0210457
 });
