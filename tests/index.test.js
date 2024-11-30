@@ -1,16 +1,16 @@
 const request = require("supertest");
 const app = require("../src/app");
 
-describe("Pruebas de rutas en el servidor Express", () => {
+describe("Pruebas en el servidor Express", () => {
   
-  it("Debe retornar todos los clientes", async () => {
+  it("Mostrar todos los clientes", async () => {
     const response = await request(app).get("/clientes");
     expect(response.status).toBe(200);
     expect(Array.isArray(response.body)).toBe(true);
     expect(response.body.length).toBeGreaterThan(0); 
   });
 
-  it("Debe crear un nuevo cliente", async () => {
+  it("Crear cliente", async () => {
     const newClient = {
       nombre_cliente: "Juan Pérez",
       direccion_cliente: "Calle 123",
@@ -25,7 +25,7 @@ describe("Pruebas de rutas en el servidor Express", () => {
     expect(response.body.nombre_cliente).toBe(newClient.nombre_cliente);
   });
 
-  it("Debe actualizar un cliente existente", async () => {
+  it("Actualizar cliente", async () => {
     const updateClient = {
       nombre_cliente: "Juan Pérez Actualizado",
       direccion_cliente: "Calle 456",
@@ -40,13 +40,13 @@ describe("Pruebas de rutas en el servidor Express", () => {
     expect(response.body.nombre_cliente).toBe(updateClient.nombre_cliente);
   });
 
-  it("Debe eliminar un cliente", async () => {
+  it("Eliminar cliente", async () => {
     const response = await request(app).delete("/clientes/1");
     expect(response.status).toBe(200);
     expect(response.text).toBe("Cliente eliminado");
   });
 
-  it("Debe retornar un cliente específico", async () => {
+  it("Retornar cliente por Id", async () => {
     const response = await request(app).get("/clientes/4");
     expect(response.status).toBe(200);
     expect(response.body).toEqual({

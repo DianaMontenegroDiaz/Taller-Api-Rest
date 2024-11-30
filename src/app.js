@@ -5,12 +5,11 @@ app.use(express.json());
 
 // Base de datos clientes
 let clientes = [
-  { id: 1, nombre: "Cliente 1", direccion: "Calle 123", celular: "1234567890" },
-  { id: 2, nombre: "Cliente 2", direccion: "Calle 456", celular: "0987654321" },
-  { id: 3, nombre: "Cliente 3", direccion: "Calle 572", celular: "3209034587" },
+  { id: 1, nombre: "Diana Montenegro", direccion: "Calle 6 No. 5-20", celular: "1234567890" },
+  { id: 2, nombre: "Carlos Escamilla", direccion: "Calle 456", celular: "0987654321" },
+  { id: 3, nombre: "Salome Moreno", direccion: "Calle 572", celular: "3209034587" },
   { id: 4, nombre: "Juan Perez", direccion: "Calle 10 #10-17", celular: "3208865437" },
   { id: 5, nombre: "Pedro Paramo", direccion: "Calle 09 #10-17", celular: "3208865439" }
-
 ];
 
 // Obtener todos los clientes
@@ -98,7 +97,7 @@ app.get("/productos/:id", (req, res) => {
 
 app.post("/productos", (req, res) => {
   const nuevoProducto = {
-    id_producto: productos.length + 1, 
+    id_producto: productos.length + 1,
     ...req.body,
   };
   productos.push(nuevoProducto);
@@ -189,7 +188,7 @@ app.post("/carrito", (req, res) => {
   }
 
   const nuevoCarrito = {
-    id_carrito: carrito.length + 1, 
+    id_carrito: carrito.length + 1,
     id_cliente,
     productos,
   };
