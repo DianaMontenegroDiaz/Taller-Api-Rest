@@ -6,8 +6,8 @@ describe("Pruebas de rutas en el servidor Express", () => {
   it("Debe retornar todos los clientes", async () => {
     const response = await request(app).get("/clientes");
     expect(response.status).toBe(200);
-    expect(Array.isArray(response.body)).toBe(true); // Verifica que la respuesta es un array
-    expect(response.body.length).toBeGreaterThan(0); // Verifica que no esté vacío
+    expect(Array.isArray(response.body)).toBe(true);
+    expect(response.body.length).toBeGreaterThan(0); 
   });
 
   it("Debe crear un nuevo cliente", async () => {

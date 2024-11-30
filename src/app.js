@@ -1,11 +1,9 @@
 const express = require("express");
 const app = express();
 
-
-// Middleware para parsear JSON
 app.use(express.json());
 
-// Base de datos simulada en memoria
+// Base de datos clientes
 let clientes = [
   { id: 1, nombre: "Cliente 1", direccion: "Calle 123", celular: "1234567890" },
   { id: 2, nombre: "Cliente 2", direccion: "Calle 456", celular: "0987654321" },
@@ -15,12 +13,12 @@ let clientes = [
 
 ];
 
-// Ruta GET: Obtener todos los clientes
+// Obtener todos los clientes
 app.get("/clientes", (req, res) => {
   res.status(200).json(clientes);
 });
 
-// Ruta GET: Obtener un cliente por ID
+// Obtener un cliente por ID
 app.get("/clientes/:id", (req, res) => {
   const id = parseInt(req.params.id);
   const cliente = clientes.find((cli) => cli.id === id);
@@ -31,7 +29,7 @@ app.get("/clientes/:id", (req, res) => {
   }
 });
 
-// Ruta POST: Crear un nuevo cliente
+// Crear un nuevo cliente
 app.post("/clientes", (req, res) => {
   const { nombre_cliente, direccion_cliente, celular_cliente } = req.body;
 
@@ -42,12 +40,12 @@ app.post("/clientes", (req, res) => {
     celular_cliente,
   };
 
-  clientes.push(newClient); // Agrega el nuevo cliente al array de clientes
+  clientes.push(newClient); // Agrega nuevo cliente 
 
-  res.status(201).json(newClient); // Responde con el cliente creado
+  res.status(201).json(newClient); // Muestra el cliente creado
 });
 
-// Ruta PUT: Actualizar completamente un cliente
+// Actualizar datos de un cliente
 app.put("/clientes/:id_cliente", (req, res) => {
   const { id_cliente } = req.params;
   const { nombre_cliente, direccion_cliente, celular_cliente } = req.body;
@@ -59,10 +57,10 @@ app.put("/clientes/:id_cliente", (req, res) => {
   client.direccion_cliente = direccion_cliente;
   client.celular_cliente = celular_cliente;
 
-  res.status(200).json(client); // Devuelve el cliente actualizado
+  res.status(200).json(client); // Muestra los cambio del cliente actualizado
 });
 
-// Ruta DELETE: Eliminar un cliente
+// Eliminar un cliente
 app.delete("/clientes/:id", (req, res) => {
   const id = parseInt(req.params.id);
   const clientesFiltrados = clientes.filter((cli) => cli.id !== id);
@@ -76,22 +74,17 @@ app.delete("/clientes/:id", (req, res) => {
 });
 
 
-/// -----------------------
-
-
-// Base de datos simulada
 let productos = [
   { id_producto: 1, nombre_producto: "Mouse Pad", precio_producto: 20000 },
   { id_producto: 2, nombre_producto: "Disco Duro 1TB", precio_producto: 300000 },
   { id_producto: 3, nombre_producto: "Teclado Mecánico", precio_producto: 350000 },
 ];
 
-// 1. Obtener todos los productos
 app.get("/productos", (req, res) => {
   res.status(200).json(productos);
 });
 
-// 2. Obtener un producto específico por ID
+
 app.get("/productos/:id", (req, res) => {
   const id = parseInt(req.params.id, 10);
   const producto = productos.find(p => p.id_producto === id);
@@ -102,17 +95,17 @@ app.get("/productos/:id", (req, res) => {
   }
 });
 
-// 3. Crear un nuevo producto
+
 app.post("/productos", (req, res) => {
   const nuevoProducto = {
-    id_producto: productos.length + 1, // Genera un nuevo ID
+    id_producto: productos.length + 1, 
     ...req.body,
   };
   productos.push(nuevoProducto);
   res.status(201).json(nuevoProducto);
 });
 
-// 4. Actualizar un producto existente
+
 app.put("/productos/:id", (req, res) => {
   const id = parseInt(req.params.id, 10);
   const productoIndex = productos.findIndex(p => p.id_producto === id);
@@ -125,7 +118,7 @@ app.put("/productos/:id", (req, res) => {
   }
 });
 
-// 5. Eliminar un producto
+
 app.delete("/productos/:id", (req, res) => {
   const id = parseInt(req.params.id, 10);
   const productoIndex = productos.findIndex(p => p.id_producto === id);
@@ -140,12 +133,6 @@ app.delete("/productos/:id", (req, res) => {
 
 
 
-
-//// ------------------------
-
-
-
-// Base de datos temporal en memoria
 const carrito = [
   {
     id_carrito: 1,
@@ -179,14 +166,12 @@ const carrito = [
   },
 ];
 
-// Rutas para carrito
 
-// Obtener todos los carritos
 app.get("/carrito", (req, res) => {
   res.status(200).json(carrito);
 });
 
-// Obtener un carrito específico por id_carrito
+
 app.get("/carrito/:id", (req, res) => {
   const carritoEncontrado = carrito.find((c) => c.id_carrito === parseInt(req.params.id));
   if (!carritoEncontrado) {
@@ -195,7 +180,7 @@ app.get("/carrito/:id", (req, res) => {
   res.status(200).json(carritoEncontrado);
 });
 
-// Crear un nuevo carrito
+
 app.post("/carrito", (req, res) => {
   const { id_cliente, productos } = req.body;
 
@@ -204,7 +189,7 @@ app.post("/carrito", (req, res) => {
   }
 
   const nuevoCarrito = {
-    id_carrito: carrito.length + 1, // Generar un nuevo id único
+    id_carrito: carrito.length + 1, 
     id_cliente,
     productos,
   };
@@ -213,7 +198,7 @@ app.post("/carrito", (req, res) => {
   res.status(201).json(nuevoCarrito);
 });
 
-// Actualizar un carrito existente
+
 app.put("/carrito/:id", (req, res) => {
   const carritoEncontrado = carrito.find((c) => c.id_carrito === parseInt(req.params.id));
 
@@ -233,7 +218,7 @@ app.put("/carrito/:id", (req, res) => {
   res.status(200).json(carritoEncontrado);
 });
 
-// Eliminar un carrito
+
 app.delete("/carrito/:id", (req, res) => {
   const carritoIndex = carrito.findIndex((c) => c.id_carrito === parseInt(req.params.id));
 
@@ -244,16 +229,6 @@ app.delete("/carrito/:id", (req, res) => {
   carrito.splice(carritoIndex, 1);
   res.status(200).send("Carrito eliminado");
 });
-
-
-
-
-////--------------------
-
-
-
-
-
 
 
 module.exports = app;
