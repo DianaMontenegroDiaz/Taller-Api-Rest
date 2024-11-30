@@ -1,5 +1,5 @@
 const request = require("supertest");
-const app = require("./app");
+const app = require("../src/app");
 
 describe("Pruebas de rutas en el servidor Express", () => {
   
@@ -47,13 +47,13 @@ describe("Pruebas de rutas en el servidor Express", () => {
   });
 
   it("Debe retornar un cliente específico", async () => {
-    const response = await request(app).get("/clientes/5");
+    const response = await request(app).get("/clientes/4");
     expect(response.status).toBe(200);
     expect(response.body).toEqual({
-      id_cliente: 5,
-      nombre_cliente: "Pedro Paramo",
-      direccion_cliente: "Calle 09 #10-17",
-      celular_cliente: "3208865439",
+      id: 4,
+      nombre: "Juan Perez",
+      direccion: "Calle 10 #10-17",
+      celular: "3208865437",
     });
   });
 });

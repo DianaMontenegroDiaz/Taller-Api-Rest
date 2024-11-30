@@ -10,7 +10,7 @@ let clientes = [
   { id: 1, nombre: "Cliente 1", direccion: "Calle 123", celular: "1234567890" },
   { id: 2, nombre: "Cliente 2", direccion: "Calle 456", celular: "0987654321" },
   { id: 3, nombre: "Cliente 3", direccion: "Calle 572", celular: "3209034587" },
-  { id: 4, nombre: "Cliente 4", direccion: "Carrera 456", celular: "3154218747" },
+  { id: 4, nombre: "Juan Perez", direccion: "Calle 10 #10-17", celular: "3208865437" },
   { id: 5, nombre: "Pedro Paramo", direccion: "Calle 09 #10-17", celular: "3208865439" }
 
 ];
