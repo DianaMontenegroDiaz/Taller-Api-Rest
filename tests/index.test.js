@@ -1,66 +1,48 @@
-const request =require('supertest');
-const app =require('../src/app');
+const request = require('supertest');
+const app = require('../src/app');
 
-describe('get/clientes',() => {
+describe('Pruebas de rutas en el servidor Express', () => {
+  
+  it('Debe retornar todos los clientes', async () => {
+    const response = await request(app).get('/clientes');
+    expect(response.status).toBe(200);
+    expect(Array.isArray(response.body)).toBe(true); // Verifica que la respuesta es un array
+    expect(response.body.length).toBeGreaterThan(0); // Verifica que no esté vacío
+  });
 
-    it ('retornar un codigo 200', async () => {
-        const response = await request(app).get('/clientes');
-        expect(response.text).toBe('Ejemplo 1 de prueba unitaria');
-});
-    
-});
+  it('Debe crear un nuevo cliente', async () => {
+    const newClient = {
+      nombre_cliente: 'Juan Pérez',
+      direccion_cliente: 'Calle 123',
+      celular_cliente: '1234567890'
+    };
 
-describe('get/productos',() => {
+    const response = await request(app)
+      .post('/clientes')
+      .send(newClient);
 
-    it ('retornar un codigo 200', async () => {
-        const response = await request(app).get('/productos');
-        expect(response.text).toBe('Ejemplo 2 de prueba unitaria');
-});
-    
-});
+    expect(response.status).toBe(201);
+    expect(response.body.nombre_cliente).toBe(newClient.nombre_cliente);
+  });
 
-describe('get/clientes/:id_cliente',() => {
+  it('Debe actualizar un cliente existente', async () => {
+    const updateClient = {
+      nombre_cliente: 'Juan Pérez Actualizado',
+      direccion_cliente: 'Calle 456',
+      celular_cliente: '0987654321'
+    };
 
-    it ('retornar un codigo 200', async () => {
-        const response = await request(app).get('/clientes/:id_cliente');
-        expect(response.text).toBe('Ejemplo 3 de prueba unitaria');
-});
-    
-});
+    const response = await request(app)
+      .put('/clientes/1')
+      .send(updateClient);
 
-describe('get/productos/:id_producto',() => {
+    expect(response.status).toBe(200);
+    expect(response.body.nombre_cliente).toBe(updateClient.nombre_cliente);
+  });
 
-    it ('retornar un codigo 200', async () => {
-        const response = await request(app).get('/productos/:id_producto');
-        expect(response.text).toBe('Ejemplo 4 de prueba unitaria');
-});
-    
-});
-
-describe('get/carrito',() => {
-
-    it ('retornar un codigo 200', async () => {
-        const response = await request(app).get('/carrito');
-        expect(response.text).toBe('Ejemplo 5 de prueba unitaria');
-});
-    
-});
-
-describe('get/carrito/:id_cliente',() => {
-
-    it ('retornar un codigo 200', async () => {
-        const response = await request(app).get('/carrito/:id_cliente');
-        expect(response.text).toBe('Ejemplo 6 de prueba unitaria');
-});
-    
-});
-
-describe('post/clientes',() => {
-
-    it ('retornar un codigo 200', async () => {
-        const response = await request(app).post('/clientes');
-        expect(response.status).toBe(200);
-        expect(response.text).toBe('Ejemplo 7 de prueba unitaria');
-});
-    
+  it('Debe eliminar un cliente', async () => {
+    const response = await request(app).delete('/clientes/1');
+    expect(response.status).toBe(200);
+    expect(response.text).toBe('Cliente eliminado');
+  });
 });
