@@ -4,6 +4,7 @@ const app = require("../src/app"); // Importa la aplicación Express desde app.j
 const PORT = 4000;
 
 // Inicia el servidor y muestra un mensaje en la consola cuando se haya iniciado correctamente
+
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
