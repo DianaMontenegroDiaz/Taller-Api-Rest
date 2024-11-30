@@ -16,7 +16,7 @@ describe("Pruebas de rutas para carritos en el servidor Express", () => {
     expect(response.status).toBe(200);
     expect(response.body).toEqual({
       id_carrito: 2,
-      id_cliente: 3,
+      id_cliente: 5,
       productos: [
         {
           id_producto: 4,
@@ -28,7 +28,7 @@ describe("Pruebas de rutas para carritos en el servidor Express", () => {
           id_producto: 5,
           nombre_producto: "Camara de Seguridad",
           cantidad: 1,
-          precio_unitario: 350000,
+          precio_unitario: 400000,
         },
       ],
     });

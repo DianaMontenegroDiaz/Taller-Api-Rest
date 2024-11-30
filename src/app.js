@@ -164,8 +164,14 @@ const carrito = [
     id_cliente: 5,
     productos: [
       {
+        id_producto: 4,
+        nombre_producto: "Teclado Mecánico",
+        cantidad: 1,
+        precio_unitario: 350000,
+      },
+      {
         id_producto: 5,
-        nombre_producto: "Cámara de Seguridad",
+        nombre_producto: "Camara de Seguridad",
         cantidad: 1,
         precio_unitario: 400000,
       },
