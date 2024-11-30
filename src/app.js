@@ -75,4 +75,179 @@ app.delete("/clientes/:id", (req, res) => {
   }
 });
 
+
+/// -----------------------
+
+
+// Base de datos simulada
+let productos = [
+  { id_producto: 1, nombre_producto: "Mouse Pad", precio_producto: 20000 },
+  { id_producto: 2, nombre_producto: "Disco Duro 1TB", precio_producto: 300000 },
+  { id_producto: 3, nombre_producto: "Teclado Mecánico", precio_producto: 350000 },
+];
+
+// 1. Obtener todos los productos
+app.get("/productos", (req, res) => {
+  res.status(200).json(productos);
+});
+
+// 2. Obtener un producto específico por ID
+app.get("/productos/:id", (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  const producto = productos.find(p => p.id_producto === id);
+  if (producto) {
+    res.status(200).json(producto);
+  } else {
+    res.status(404).send("Producto no encontrado");
+  }
+});
+
+// 3. Crear un nuevo producto
+app.post("/productos", (req, res) => {
+  const nuevoProducto = {
+    id_producto: productos.length + 1, // Genera un nuevo ID
+    ...req.body,
+  };
+  productos.push(nuevoProducto);
+  res.status(201).json(nuevoProducto);
+});
+
+// 4. Actualizar un producto existente
+app.put("/productos/:id", (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  const productoIndex = productos.findIndex(p => p.id_producto === id);
+
+  if (productoIndex !== -1) {
+    productos[productoIndex] = { id_producto: id, ...req.body };
+    res.status(200).json(productos[productoIndex]);
+  } else {
+    res.status(404).send("Producto no encontrado");
+  }
+});
+
+// 5. Eliminar un producto
+app.delete("/productos/:id", (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  const productoIndex = productos.findIndex(p => p.id_producto === id);
+
+  if (productoIndex !== -1) {
+    productos.splice(productoIndex, 1);
+    res.status(200).send("Producto eliminado");
+  } else {
+    res.status(404).send("Producto no encontrado");
+  }
+});
+
+
+
+
+//// ------------------------
+
+
+
+// Base de datos temporal en memoria
+const carrito = [
+  {
+    id_carrito: 1,
+    id_cliente: 3,
+    productos: [
+      {
+        id_producto: 4,
+        nombre_producto: "Teclado Mecánico",
+        cantidad: 1,
+        precio_unitario: 350000,
+      },
+    ],
+  },
+  {
+    id_carrito: 2,
+    id_cliente: 5,
+    productos: [
+      {
+        id_producto: 5,
+        nombre_producto: "Cámara de Seguridad",
+        cantidad: 1,
+        precio_unitario: 400000,
+      },
+    ],
+  },
+];
+
+// Rutas para carrito
+
+// Obtener todos los carritos
+app.get("/carrito", (req, res) => {
+  res.status(200).json(carrito);
+});
+
+// Obtener un carrito específico por id_carrito
+app.get("/carrito/:id", (req, res) => {
+  const carritoEncontrado = carrito.find((c) => c.id_carrito === parseInt(req.params.id));
+  if (!carritoEncontrado) {
+    return res.status(404).send("Carrito no encontrado");
+  }
+  res.status(200).json(carritoEncontrado);
+});
+
+// Crear un nuevo carrito
+app.post("/carrito", (req, res) => {
+  const { id_cliente, productos } = req.body;
+
+  if (!id_cliente || !productos || !Array.isArray(productos)) {
+    return res.status(400).send("Datos incompletos o inválidos");
+  }
+
+  const nuevoCarrito = {
+    id_carrito: carrito.length + 1, // Generar un nuevo id único
+    id_cliente,
+    productos,
+  };
+
+  carrito.push(nuevoCarrito);
+  res.status(201).json(nuevoCarrito);
+});
+
+// Actualizar un carrito existente
+app.put("/carrito/:id", (req, res) => {
+  const carritoEncontrado = carrito.find((c) => c.id_carrito === parseInt(req.params.id));
+
+  if (!carritoEncontrado) {
+    return res.status(404).send("Carrito no encontrado");
+  }
+
+  const { id_cliente, productos } = req.body;
+
+  if (!id_cliente || !productos || !Array.isArray(productos)) {
+    return res.status(400).send("Datos incompletos o inválidos");
+  }
+
+  carritoEncontrado.id_cliente = id_cliente;
+  carritoEncontrado.productos = productos;
+
+  res.status(200).json(carritoEncontrado);
+});
+
+// Eliminar un carrito
+app.delete("/carrito/:id", (req, res) => {
+  const carritoIndex = carrito.findIndex((c) => c.id_carrito === parseInt(req.params.id));
+
+  if (carritoIndex === -1) {
+    return res.status(404).send("Carrito no encontrado");
+  }
+
+  carrito.splice(carritoIndex, 1);
+  res.status(200).send("Carrito eliminado");
+});
+
+
+
+
+////--------------------
+
+
+
+
+
+
+
 module.exports = app;
