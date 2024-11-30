@@ -29,4 +29,7 @@ app.post('/clientes', (req, res) => {
     res.send('Ejemplo 7 de prueba unitaria');
 });
 
+app.patch('/carrito/:id_cliente', (req, res) => {
+    res.send('Ejemplo 8 de prueba unitaria');
+});
 module.exports = app;
